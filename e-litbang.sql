@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jul 2021 pada 10.13
--- Versi server: 10.4.19-MariaDB
--- Versi PHP: 8.0.6
+-- Waktu pembuatan: 17 Jul 2021 pada 08.55
+-- Versi server: 10.1.32-MariaDB
+-- Versi PHP: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -75,7 +76,7 @@ CREATE TABLE `beritaartikel` (
   `judulberita` text NOT NULL,
   `thumbnailberita` varchar(100) NOT NULL,
   `headlineberita` varchar(100) NOT NULL,
-  `tanggalberita` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `tanggalberita` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `isiberita` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -184,7 +185,7 @@ INSERT INTO `datapemohonskp` (`id_peneliti`, `id_user`, `namalengkap`, `alamatpe
 CREATE TABLE `dokumenhasilpenelitian` (
   `id_dokumen` int(11) NOT NULL,
   `id_peneliti` varchar(100) NOT NULL,
-  `tanggalunggahdokumen` timestamp NOT NULL DEFAULT current_timestamp(),
+  `tanggalunggahdokumen` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `dokumen` varchar(100) NOT NULL,
   `status_dokumen` enum('belum_diverifikasi','terverifikasi','ditolak') NOT NULL,
   `komentar` varchar(191) DEFAULT NULL
@@ -208,7 +209,7 @@ CREATE TABLE `dokumentasifoto` (
   `judulfoto` varchar(100) NOT NULL,
   `foto` varchar(100) NOT NULL,
   `keteranganfoto` varchar(100) NOT NULL,
-  `tanggalunggahfoto` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `tanggalunggahfoto` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -348,7 +349,7 @@ INSERT INTO `profil` (`id_profil`, `fotoheader`, `judul`, `isi`) VALUES
 CREATE TABLE `progress` (
   `id_progress` int(11) NOT NULL,
   `id_peneliti` varchar(191) NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `progress` varchar(191) NOT NULL,
   `tahapan_penelitian` varchar(191) NOT NULL,
   `lokasi_terkait` varchar(191) NOT NULL,
@@ -446,15 +447,16 @@ CREATE TABLE `surat_skp` (
   `nomor` varchar(191) NOT NULL,
   `dasar` text NOT NULL,
   `kabid` varchar(191) NOT NULL,
-  `nip_kabid` varchar(191) NOT NULL
+  `nip_kabid` varchar(191) NOT NULL,
+  `tanda_tangan` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `surat_skp`
 --
 
-INSERT INTO `surat_skp` (`id_surat_skp`, `nomor`, `dasar`, `kabid`, `nip_kabid`) VALUES
-(1, 'PP.05.02/888/SKP/IX/WASNAS', '<p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tincidunt scelerisque orci at varius. Integer aliquet pretium sem eget ullamcorper. Cras faucibus feugiat egestas. Cras auctor mauris nibh, sed convallis tortor volutpat in. Cras ultrices nibh id tempor tristique. Sed odio diam, placerat ac est in, accumsan facilisis turpis. Nunc et nisl nisl. Vestibulum eu ornare mauris, at aliquam felis. Vivamus nec vulputate ante. Suspendisse rutrum semper accumsan. Phasellus enim diam, maximus non tempus eu, accumsan pulvinar nisl. Maecenas eget lorem ac erat vulputate mattis. Aenean fermentum sollicitudin nunc at semper. Proin non mattis tortor.</p>\r\n', 'Drs. ANDRI HADIAN', '196411231992031006');
+INSERT INTO `surat_skp` (`id_surat_skp`, `nomor`, `dasar`, `kabid`, `nip_kabid`, `tanda_tangan`) VALUES
+(1, 'PP.05.02/888/SKP/IX/WASNAS', '<p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tincidunt scelerisque orci at varius. Integer aliquet pretium sem eget ullamcorper. Cras faucibus feugiat egestas. Cras auctor mauris nibh, sed convallis tortor volutpat in. Cras ultrices nibh id tempor tristique. Sed odio diam, placerat ac est in, accumsan facilisis turpis. Nunc et nisl nisl. Vestibulum eu ornare mauris, at aliquam felis. Vivamus nec vulputate ante. Suspendisse rutrum semper accumsan. Phasellus enim diam, maximus non tempus eu, accumsan pulvinar nisl. Maecenas eget lorem ac erat vulputate mattis. Aenean fermentum sollicitudin nunc at semper. Proin non mattis tortor.</p>\r\n', 'Drs. ANDRI HADIAN', '196411231992031006', 'tanda_tangan.jpeg');
 
 -- --------------------------------------------------------
 

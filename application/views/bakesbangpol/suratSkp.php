@@ -15,6 +15,7 @@
                 <th class="not_mapped_style" style="text-align: center;">Dasar</th>
                 <th class="not_mapped_style" style="text-align: center;">Kabid</th>
                 <th class="not_mapped_style" style="text-align: center;">NIP Kabid</th>
+                <th class="not_mapped_style" style="text-align: center;">Tanda Tangan</th>
               </tr>
             </thead>
             <tbody>
@@ -23,6 +24,7 @@
                 <td><?= $dasar; ?></td>
                 <td><?= $kabid; ?></td>
                 <td><?= $nip_kabid; ?></td>
+                <td><img src="<?= base_url('assets/' . $tanda_tangan); ?>" width="100%"/></td>
               </tr>
             </tbody>
           </table>
@@ -60,6 +62,11 @@
                 <div class="form-group">
                   <label>NIP Kabid</label>
                   <input type="text" name="nip_kabid" id="nip_kabid" class="form-control" required value="<?= $nip_kabid; ?>">
+                </div>
+                <div class="form-group">
+                  <label>Tanda Tangan</label>
+                  <input type="file" name="tanda_tangan" id="tanda_tangan" class="form-control" required>
+                  <input type="hidden" name="tanda_tangan_lama" id="tanda_tangan_lama" class="form-control" value="<?= $tanda_tangan; ?>">
                 </div>
             </div>
             <div class="modal-footer">

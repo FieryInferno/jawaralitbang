@@ -152,7 +152,7 @@
     </tr>
     <tr>
       <td></td>
-      <td class="text-center"><img src="<?= base_url(); ?>assets/tanda_tangan.jpeg" alt="" width="50%"></td>
+      <td class="text-center"><img src="<?= base_url('assets/' . $surat['tanda_tangan']); ?>" alt="" width="50%"></td>
     </tr>
     <tr>
       <td></td>
